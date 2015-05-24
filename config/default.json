@@ -1,0 +1,13 @@
+{
+
+  "appConfig":{
+    "dbConfig": {
+      "host": "localhost",
+      "port": "5984",
+      "dbName": "mytrack-dev"
+    }
+  }
+
+
+
+}

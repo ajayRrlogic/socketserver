@@ -1,0 +1,23 @@
+{
+  "name": "socketserver",
+  "version": "1.0.0",
+  "description": "for listening to devices",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "."
+  },
+  "author": "Ajay @ RRlogic",
+  "license": "MIT",
+  "dependencies": {
+    "config": "^1.13.0",
+    "grunt": "^0.4.5",
+    "log4js": "^0.6.25",
+    "mongoose": "^4.0.3",
+    "net": "^1.0.2",
+    "winston": "^1.0.0"
+  }
+}
