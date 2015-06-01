@@ -54,11 +54,73 @@ function locationData()
 
 }
 
-function getGeoFences(location)
+
+function geofencesCallback(err,data1,data2)
+{
+  if(err)
+  {
+    console.log(err);
+  }
+  else
+  {
+    console.log('geofences moved out from'+ data1);
+    console.log('geofences moved in to '+ data2);
+  }
+
+}
+
+function getGeoFences(location1,location2,callback)
 {
   var geoFenceMgrObject = new geofenceManager();
-  console.log('in getGeoFences '+location);
-  geoFenceMgrObject.getInGeofences(location.latitude,location.longitude,null);
+//  console.log('in getGeoFences '+location1 + location2);
+  geoFenceMgrObject.getInOutGeofences(location1.latitude,location1.longitude,
+    location2.latitude,location2.longitude,callback);
+
+}
+
+function getLocationsCallBack(err,data)
+{
+  if(err)
+  {
+    console.log(err);
+  }
+  else
+  {
+    //call the getgeofences with last 2 locations
+    if(data.length >=2)
+    {
+      getGeoFences(data[1],data[0],geofencesCallback);
+    }
+  //  console.log(data);
+  }
+
+}
+
+//get the last location for this device id
+function getLastLocationDataForDeviceID(deviceID,callback)
+{
+  locationModel.find(
+    {
+      'deviceID': deviceID
+    }
+
+  ).
+  sort({'_id':-1}).
+  limit(2)
+  .exec(function (err, locations) {
+    if(err)
+    {
+      console.log('error' + err);
+      callback(err,null);
+    }
+    else
+    {
+      console.log('getting last location:' +locations);
+
+      callback(null,locations);
+
+    }
+  });
 
 }
 
@@ -82,7 +144,7 @@ locationData.prototype.saveLocation = function(gsObject,callback)
       else
       {
         console.log('save complete');
-      //  getGeoFences(gsObject);
+        getLastLocationDataForDeviceID(gsObject.deviceID,getLocationsCallBack);
 
         callback(null,location);
       }
