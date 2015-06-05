@@ -84,7 +84,8 @@ console.log('geofenceManager.prototype.getInGeofences');
 
   },
   {
-    '_id': 1
+    '_id': 0,
+		'name':1
   }
 
 
