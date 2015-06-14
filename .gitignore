@@ -2,7 +2,6 @@
 .nodemonignore
 .sass-cache/
 npm-debug.log
-*.pem
 *.cer
 *.p12
 node_modules/
