@@ -13,10 +13,12 @@
   "author": "Ajay @ RRlogic",
   "license": "MIT",
   "dependencies": {
+    "apn": "^1.7.4",
     "config": "^1.13.0",
     "grunt": "^0.4.5",
     "log4js": "^0.6.25",
     "mongoose": "^4.0.3",
+    "mosca": "^0.30.0",
     "net": "^1.0.2",
     "winston": "^1.0.0"
   }
