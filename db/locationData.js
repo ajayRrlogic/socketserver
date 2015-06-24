@@ -8,6 +8,9 @@ var mongoose = require('mongoose'),
 	Schema = mongoose.Schema;
 
 var geofenceManager = require('./geofenceManager.js');
+var handlerUtils = require('../mqttHandler/handlerUtils.js');
+
+
 //use mongoose to insert the device record in a table
 
 //the model for the device will be
@@ -63,8 +66,15 @@ function geofencesCallback(err,data1,data2)
   }
   else
   {
+
     console.log('geofences moved out from'+ data1);
     console.log('geofences moved in to '+ data2);
+		var geoFenceInfo = {};
+		geoFenceInfo.moveOutFrom = data1;
+		geoFenceInfo.movedInTo =data2;
+		var handlerUtilObject  = new handlerUtils();
+		handlerUtilObject.sendNotification(geoFenceInfo);
+
   }
 
 }

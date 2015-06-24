@@ -5,7 +5,7 @@
  */
 var mongoose = require('mongoose'),
 	Schema = mongoose.Schema;
-
+	var handlerUtils = require('../mqttHandler/handlerUtils.js');
 /**
  * Geofence Schema
  */
