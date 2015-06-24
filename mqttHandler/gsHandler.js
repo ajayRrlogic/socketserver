@@ -31,15 +31,25 @@ gsHandler.prototype.handleMessage = function(msgData,client,callback)
     var handlerUtilObject  = new handlerUtils();
     var gsObject = handlerUtilObject.getLatLongObject(msgData,client.id);
 
+    logger.debug('got the gs objct');
+    logger.debug(gsObject);
+
     if(gsObject !== null)
     {
       gsObject.printSelf();
       var locationdata = new locationData();
+      logger.debug('trying to save location data');
       locationdata.saveLocation(gsObject,function(err,data)
       {
         if(err)
         {
-          console.log('error saving');
+          logger.debug('error saving');
+
+        }
+        else {
+          logger.debug('no error in saving');
+
+          logger.debug(data);
 
         }
       }

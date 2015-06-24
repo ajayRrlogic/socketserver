@@ -129,6 +129,7 @@ locationData.prototype.saveLocation = function(gsObject,callback)
 
   //create a new location object
    var location = new locationModel();
+	console.log('saving locaton model');
     location.deviceID = gsObject.deviceID;
     location.latitude = gsObject.latitude;
     location.longitude = gsObject.longitude;

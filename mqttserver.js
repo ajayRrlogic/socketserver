@@ -1,6 +1,25 @@
 'use strict';
 
 var mqttDataProtocol = require('./mqttDataProtocol.js');
+var config = require('config');
+var mongoose = require('mongoose');
+
+var dbConfig = config.get('appConfig.dbConfig');
+
+console.log(dbConfig);
+
+//connect to the DB
+var connectionString ='mongodb://'+dbConfig.host +'/'+dbConfig.dbName;
+console.log(connectionString);
+mongoose.connect(connectionString);
+
+
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'DB connection error:'));
+db.once('open', function (callback) {
+  // yay!
+  console.log('connect to db');
+});
 
 
 var mosca = require('mosca');

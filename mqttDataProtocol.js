@@ -49,8 +49,8 @@ function sendNotification()
 
     note.expiry = Math.floor(Date.now() / 1000) + 3600; // Expires 1 hour from now.
 
-    note.alert = 'you have added a location to the server';
-    note.payload = {'messageFrom': 'the loving server'};
+    note.alert = '\uD83D\uDCE7 \u2709 You have a new message';
+    note.payload = {'messageFrom': 'Caroline'};
 
 
 
